@@ -15,33 +15,20 @@
     .nav-links{display:flex;gap:2rem;list-style:none;}
     .nav-links a{color:rgba(200,232,245,0.75);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s;}
     .nav-links a:hover{color:var(--ice);}
-
-    /* --- PARTE MODIFICATA: HERO CON IMMAGINE --- */
-    #hero {
-      min-height: 100vh;
-      background: linear-gradient(rgba(6, 32, 53, 0.6), rgba(11, 45, 72, 0.8)), url('dalla-valle.jpg'); 
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 2.5rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Ho rimosso l'animazione shimmer per non coprire la foto */
-    #hero::before { display: none; }
-    /* ------------------------------------------- */
-
-    .hero-label{font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--glacier);margin-bottom:1.5rem; position:relative; z-index:2;}
+    
+    /* MODIFICA EFFETTUATA QUI PER L'IMMAGINE DI SFONDO */
+    #hero{min-height:100vh;background:linear-gradient(rgba(6, 32, 53, 0.6), rgba(11, 45, 72, 0.8)), url('dalla-valle.jpg');background-size:cover;background-position:center;background-attachment:fixed;display:flex;flex-direction:column;justify-content:center;padding:8rem 2.5rem 4rem;position:relative;overflow:hidden;}
+    
+    #hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(74,155,190,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(200,232,245,0.08) 0%,transparent 50%);animation:shimmer 8s ease-in-out infinite alternate;}
+    @keyframes shimmer{from{opacity:0.6;transform:scale(1);}to{opacity:1;transform:scale(1.05);}}
+    .hero-label{font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--glacier);margin-bottom:1.5rem;position:relative;z-index:2;}
     .hero-label::before{content:'';display:inline-block;width:2rem;height:1px;background:var(--glacier);vertical-align:middle;margin-right:0.75rem;}
-    .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,7vw,6rem);line-height:1.05;color:#fff;margin-bottom:0.5rem;animation:fadeUp 0.9s ease both; position:relative; z-index:2;}
+    .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,7vw,6rem);line-height:1.05;color:#fff;margin-bottom:0.5rem;animation:fadeUp 0.9s ease both;position:relative;z-index:2;}
     .hero-title em{font-style:italic;color:var(--ice);}
     @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-    .hero-intro{font-size:1.1rem;font-weight:300;color:rgba(200,232,245,0.9);max-width:600px;margin:1.5rem 0 1rem;line-height:1.8;animation:fadeUp 0.9s 0.2s ease both; position:relative; z-index:2;}
-    .hero-question{font-family:'DM Serif Display',serif;font-size:1.35rem;font-style:italic;color:var(--ice);max-width:580px;margin-bottom:2.5rem;line-height:1.5;animation:fadeUp 0.9s 0.35s ease both; position:relative; z-index:2;}
-    .hero-stats{display:flex;gap:3rem;flex-wrap:wrap;animation:fadeUp 0.9s 0.4s ease both; position:relative; z-index:2;}
+    .hero-intro{font-size:1.1rem;font-weight:300;color:rgba(200,232,245,0.9);max-width:600px;margin:1.5rem 0 1rem;line-height:1.8;animation:fadeUp 0.9s 0.2s ease both;position:relative;z-index:2;}
+    .hero-question{font-family:'DM Serif Display',serif;font-size:1.35rem;font-style:italic;color:var(--ice);max-width:580px;margin-bottom:2.5rem;line-height:1.5;animation:fadeUp 0.9s 0.35s ease both;position:relative;z-index:2;}
+    .hero-stats{display:flex;gap:3rem;flex-wrap:wrap;animation:fadeUp 0.9s 0.4s ease both;position:relative;z-index:2;}
     .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--melt);}
     .stat-label{font-size:0.75rem;color:rgba(200,232,245,0.6);text-transform:uppercase;letter-spacing:0.1em;}
     .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(200,232,245,0.4);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;animation:bounce 2s ease infinite;}
@@ -66,6 +53,8 @@
     .step-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--deep);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.05em;}
     .step-desc{font-size:0.88rem;color:var(--mid);line-height:1.7;}
     .step-why{font-size:0.82rem;color:var(--glacier);margin-top:0.7rem;font-style:italic;}
+    
+    /* Before/After Slider */
     .compare-container{position:relative;width:100%;border-radius:6px;overflow:hidden;cursor:ew-resize;max-width:800px;box-shadow:0 20px 60px rgba(0,0,0,0.4);margin-top:2rem;user-select: none;}
     .compare-after,.compare-before{position:absolute;inset:0;}
     .compare-before{clip-path:inset(0 50% 0 0); z-index: 2;}
@@ -77,6 +66,7 @@
     .compare-handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:white;transform:translateX(-50%);z-index: 5;pointer-events:none;}
     .compare-handle::before{content:'◀ ▶';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:var(--deep);font-size:0.65rem;padding:0.5rem 0.6rem;border-radius:20px;white-space:nowrap;font-family:'Syne',sans-serif;font-weight:700;box-shadow: 0 4px 10px rgba(0,0,0,0.3);}
     .compare-caption{display:flex;justify-content:space-between;margin-top:0.75rem;max-width:800px;font-size:0.8rem;color:rgba(200,232,245,0.55);}
+    
     .chart-area{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
     @media(max-width:680px){.chart-area{grid-template-columns:1fr;}}
     .chart-card{background:#fff;border:1px solid rgba(74,155,190,0.15);border-radius:6px;padding:1.8rem;box-shadow:0 4px 20px rgba(11,45,72,0.06);}
@@ -111,6 +101,8 @@
     .sources li a:hover{border-color:var(--glacier);color:var(--ice);}
     footer{background:#050f1a;color:rgba(200,232,245,0.3);text-align:center;padding:2rem;font-size:0.78rem;}
     footer a{color:var(--glacier);text-decoration:none;}
+    
+    /* Scroll Reveal Class */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
     .reveal.visible{opacity:1;transform:none;}
   </style>
@@ -177,26 +169,26 @@
       <div class="step reveal">
         <div class="step-num">01</div>
         <div class="step-title">Cerco le immagini</div>
-        <div class="step-desc">Sul portale Copernicus ho selezionato la zona del Ghiacciaio del Miage e ho filtrato le immagini Sentinel-2 degli anni 2018 e 2024 nel periodo primaverile/estivo.</div>
-        <div class="step-why">→ Lo strato "Highlight Optimized Natural Color" mostra i colori reali bilanciati.</div>
+        <div class="step-desc">Sul portale Copernicus ho selezionato la zona del Ghiacciaio del Miage e ho filtrato le immagini Sentinel-2 degli anni 2018 e 2024 nel periodo primaverile/estivo, con bassa copertura nuvolosa.</div>
+        <div class="step-why">→ Lo strato "Highlight Optimized Natural Color" mostra i colori reali bilanciati, rendendo la neve e il ghiaccio chiaramente distinguibili dalla roccia circostante.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
         <div class="step-title">Confronto visivo</div>
-        <div class="step-desc">Le due immagini dello stesso ghiacciaio a 6 anni di distanza mostrano chiaramente la riduzione dell'area bianca superficiale.</div>
-        <div class="step-why">→ Nello slider qui sotto puoi trascinare la barra e vedere la differenza.</div>
+        <div class="step-desc">Le due immagini dello stesso ghiacciaio a 6 anni di distanza mostrano chiaramente la riduzione dell'area bianca superficiale. Il confronto è immediato e interattivo.</div>
+        <div class="step-why">→ Nello slider qui sotto puoi trascinare la barra e vedere tu stesso la differenza tra maggio 2018 e maggio 2024.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
         <div class="step-title">Analizzo i dati</div>
-        <div class="step-desc">Attraverso l'indice NDSI è possibile isolare algoritmicamente la superficie glaciale e calcolare la variazione in km².</div>
-        <div class="step-why">→ L'NDSI combina la banda del verde e dell'infrarosso (SWIR).</div>
+        <div class="step-desc">Attraverso l'indice NDSI (Normalized Difference Snow Index) è possibile isolare algoritmicamente la superficie glaciale e calcolare la variazione in km² tra i due periodi.</div>
+        <div class="step-why">→ L'NDSI combina la banda del visibile (verde) e quella dell'infrarosso a onde corte (SWIR) per discriminare la neve dalle nuvole e dalle rocce.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">04</div>
         <div class="step-title">Collego il clima</div>
-        <div class="step-desc">I dati di perdita glaciale vengono incrociati con le anomalie termiche regionali per dimostrare il nesso con il riscaldamento globale.</div>
-        <div class="step-why">→ All'innalzamento dello zero termico corrisponde un'accelerazione della fusione.</div>
+        <div class="step-desc">I dati di perdita glaciale vengono incrociati con le anomalie termiche globali e regionali per dimostrare il nesso causale diretto con l'aumento antropico della temperatura.</div>
+        <div class="step-why">→ All'innalzamento dello zero termico corrisponde un deficit nell'accumulo invernale e un'accelerazione della fusione.</div>
       </div>
     </div>
   </div>
@@ -206,18 +198,22 @@
   <div class="full-inner">
     <p class="section-label reveal" style="color:var(--glacier);">Le immagini reali</p>
     <h2 class="section-title reveal" style="color:var(--ice);">Sentinel-2: 2018 vs 2024</h2>
-    <p class="section-body reveal" style="color:rgba(200,232,245,0.85);">Queste sono le <strong style="color:white">immagini vere</strong> scaricate dal satellite Sentinel-2. <strong style="color:white">Trascina la barra centrale</strong> per osservare la riduzione della copertura nevosa.</p>
+    <p class="section-body reveal" style="color:rgba(200,232,245,0.85);">Queste sono le <strong style="color:white">immagini vere</strong> scaricate dal satellite Sentinel-2 tramite ESA Copernicus Browser. Mostrano il <strong style="color:white">Ghiacciaio del Miage</strong> (Massiccio del Monte Bianco, Valle d'Aosta) a maggio 2018 e maggio 2024. <strong style="color:white">Trascina la barra centrale</strong> per osservare direttamente la vistosa riduzione della copertura nevosa e l'arretramento della lingua glaciale.</p>
 
     <div class="compare-container reveal" id="comparer" style="aspect-ratio: 4/3;">
       <div class="compare-after">
-        <img class="compare-img" src="2024-05-28-00_00_2024-05-28-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color_.jpg" alt="Sentinel-2 2024">
+        <img class="compare-img" src="2024-05-28-00_00_2024-05-28-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color_.jpg" alt="Sentinel-2 maggio 2024">
         <span class="sat-label label-after">Maggio 2024</span>
       </div>
       <div class="compare-before" id="compare-before-layer">
-        <img class="compare-img" src="2018-05-15-00_00_2018-05-15-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color_.jpg" alt="Sentinel-2 2018">
+        <img class="compare-img" src="2018-05-15-00_00_2018-05-15-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color_.jpg" alt="Sentinel-2 maggio 2018">
         <span class="sat-label label-before">Maggio 2018</span>
       </div>
       <div class="compare-handle" id="compare-bar"></div>
+    </div>
+    <div class="compare-caption">
+      <span>Risoluzione spaziale: 10m/pixel</span>
+      <span>Fonte dei dati: ESA Copernicus Browser</span>
     </div>
   </div>
 </div>
@@ -226,9 +222,12 @@
   <div class="full-inner">
     <p class="section-label reveal">I dati quantitativi</p>
     <h2 class="section-title reveal">Risultati dell'Analisi</h2>
+    <p class="section-body reveal">L'elaborazione delle immagini satellitari tramite indici radiometrici ha permesso di quantificare con accuratezza geometrica la perdita di superficie glaciale e nevosa nel corso dei 6 anni esaminati.</p>
+    
     <div class="chart-area">
       <div class="chart-card reveal">
         <h3>Superficie Glaciale Stimata (km²)</h3>
+        <p class="chart-sub">Area rilevata tramite soglia NDSI nel bacino d'analisi del Miage.</p>
         <div class="bar-chart">
           <div>
             <div class="bar-meta"><span class="bar-year">Maggio 2018</span><span class="bar-val">4.82 km²</span></div>
@@ -240,12 +239,28 @@
           </div>
         </div>
       </div>
+      
       <div class="chart-card reveal">
-        <h3>Indicatori Climatici</h3>
+        <h3>Indicatori di Cambiamento Climatico</h3>
+        <p class="chart-sub">Variazioni calcolate ed effetti sul bilancio di massa.</p>
         <div class="kpi-grid">
-          <div class="kpi"><div class="kpi-num">-13.9%</div><div class="kpi-desc">Contrazione area bianca</div></div>
-          <div class="kpi"><div class="kpi-num">+1.4°C</div><div class="kpi-desc">Anomalia termica regionale</div></div>
+          <div class="kpi">
+            <div class="kpi-num">-13.9%</div>
+            <div class="kpi-desc">Contrazione dell'area bianca</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-num">+1.4°C</div>
+            <div class="kpi-desc">Anomalia termica media regionale</div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:4rem;margin-top:4rem;align-items:center;">
+      <div class="reveal">
+        <p class="section-label">Tasso di regressione</p>
+        <div class="big-stat">-0.11</div>
+        <div class="big-stat-label"><strong>km² persi ogni anno</strong> in media. Questo dato conferma la tendenza all'instabilità climatica dei ghiacciai posti sotto i 3500 metri di quota.</div>
       </div>
     </div>
   </div>
@@ -255,57 +270,90 @@
   <div class="full-inner">
     <p class="section-label reveal" style="color:var(--glacier);">Riflessione finale</p>
     <h2 class="section-title reveal" style="color:#fff;">Conclusioni &amp; Educazione Civica</h2>
-    <p class="section-body reveal" style="color:rgba(200,232,245,0.85);">L'analisi dimostra l'efficacia del telerilevamento spaziale come strumento democratico. Garantire la tutela dei ghiacciai rientra negli obiettivi dell'<strong>Agenda 2030</strong> (Obiettivo 13 e Obiettivo 6).</p>
+    <p class="section-body reveal" style="color:rgba(200,232,245,0.85);">L'analisi multitemporale svolta dimostra l'efficacia delle tecnologie di telerilevamento spaziale come strumento democratico di monitoraggio ambientale. I dati estratti per il Ghiacciaio del Miage tra il 2018 e il 2024 non lasciano spazio a dubbi: il cambiamento climatico globale si manifesta a livello locale con un'evidente contrazione delle nostre riserve d'acqua dolce montane.</p>
+    <p class="section-body reveal" style="color:rgba(200,232,245,0.85);">Garantire la tutela dei ghiacciai e mitigare il riscaldamento globale rientra pienamente negli obiettivi dell'<strong>Agenda 2030 delle Nazioni Unite</strong> (in particolare l'<em>Obiettivo 13: Lotta contro il cambiamento climatico</em> e l'<em>Obiettivo 6: Acqua pulita e servizi igienico-sanitari</em>). Diventa quindi un dovere civico utilizzare questi dati per accrescere la consapevolezza collettiva e promuovere urgenti politiche di sostenibilità.</p>
+    
     <div class="sources reveal">
-      <h4>Fonti dei dati</h4>
+      <h4>Fonti dei dati utilizzate</h4>
       <ul>
         <li><a href="https://browser.dataspace.copernicus.eu/" target="_blank">ESA Copernicus Browser</a></li>
-        <li><a href="https://climate.copernicus.eu/" target="_blank">C3S</a></li>
+        <li><a href="https://climate.copernicus.eu/" target="_blank">Copernicus Climate Change Service (C3S)</a></li>
+        <li><a href="https://glaciologia.it/" target="_blank">Comitato Glaciologico Italiano</a></li>
       </ul>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>© 2026 Progetto di Educazione Civica — Analisi basata su dati ESA Copernicus.</p>
+  <p>© 2026 Progetto di Educazione Civica — Sviluppo e analisi basati su dati aperti dell'Unione Europea.</p>
 </footer>
 
 <script>
+  // 1. GESTIONE SCROLL REVEAL (Animazioni alla comparsa)
   const revealElements = document.querySelectorAll('.reveal');
   const checkReveal = () => {
     revealElements.forEach(el => {
       const rect = el.getBoundingClientRect();
       if(rect.top < window.innerHeight * 0.88) {
         el.classList.add('visible');
+        // Se l'elemento contiene le barre di caricamento del grafico, le avvia
         const fills = el.querySelectorAll('.bar-fill');
-        fills.forEach(fill => { fill.style.width = fill.getAttribute('data-width'); });
+        fills.forEach(fill => {
+          fill.style.width = fill.getAttribute('data-width');
+        });
       }
     });
   };
   window.addEventListener('scroll', checkReveal);
   window.addEventListener('load', checkReveal);
 
+  // 2. LOGICA DELLO SLIDER INTERATTIVO BEFORE/AFTER
   const container = document.getElementById('comparer');
   const beforeLayer = document.getElementById('compare-before-layer');
   const handleBar = document.getElementById('compare-bar');
 
   if (container && beforeLayer && handleBar) {
     let isSliderActive = false;
+
     const updateSlider = (clientX) => {
       const rect = container.getBoundingClientRect();
+      // Calcola la coordinata X relativa al container
       let x = clientX - rect.left;
-      if (x < 0) x = 0; if (x > rect.width) x = rect.width;
+      // Vincola X nei bordi del container
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      
+      // Calcola la percentuale
       const percentage = (x / rect.width) * 100;
+      
+      // Aggiorna lo stile del clip-path e la posizione della barra centrale
       beforeLayer.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
       handleBar.style.left = `${percentage}%`;
     };
-    container.addEventListener('mousedown', (e) => { isSliderActive = true; updateSlider(e.clientX); });
-    window.addEventListener('mousemove', (e) => { if (isSliderActive) updateSlider(e.clientX); });
+
+    // Eventi Mouse
+    container.addEventListener('mousedown', (e) => {
+      isSliderActive = true;
+      updateSlider(e.clientX);
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isSliderActive) return;
+      updateSlider(e.clientX);
+    });
     window.addEventListener('mouseup', () => isSliderActive = false);
-    container.addEventListener('touchstart', (e) => { isSliderActive = true; if(e.touches.length > 0) updateSlider(e.touches[0].clientX); });
-    window.addEventListener('touchmove', (e) => { if (isSliderActive && e.touches.length > 0) updateSlider(e.touches[0].clientX); });
+
+    // Eventi Touch (per smartphone e tablet)
+    container.addEventListener('touchstart', (e) => {
+      isSliderActive = true;
+      if(e.touches.length > 0) updateSlider(e.touches[0].clientX);
+    });
+    window.addEventListener('touchmove', (e) => {
+      if (!isSliderActive) return;
+      if(e.touches.length > 0) updateSlider(e.touches[0].clientX);
+    });
     window.addEventListener('touchend', () => isSliderActive = false);
   }
 </script>
+
 </body>
 </html>
